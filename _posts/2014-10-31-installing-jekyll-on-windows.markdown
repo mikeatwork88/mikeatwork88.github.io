@@ -19,18 +19,18 @@ Install Ruby development Kit
 
 then drop to command line, cd to that directory, and run 
 
-~~~ruby
+{% highlight ruby %}
 ruby dk.rb init
 ruby dk.rb install
-~~~
+{% endhighlight %}
 
 
 
 Install Jekyll
 ====
-~~~ruby
+{% highlight js %}
 gem install jekyll
-~~~
+{% endhighlight %}
 
 
 
@@ -39,15 +39,15 @@ Install highlighter
 (But Github doesnt have rouge as of 2014/10/31. )
 
 
-~~~ruby
+{% highlight js %}
 gem install rouge
-~~~
+{% endhighlight %}
 
 then I opened my site's config.yml file and added a line 
 
-~~~ruby
+{% highlight js %}
 highlighter: rouge
-~~~
+{% endhighlight %}
 
 For Github I had to remove the rouge from config,
 
@@ -55,9 +55,9 @@ and could have gone with straight markdown highlighting
 
 ... changing the markdown to redcarpet and using the standard Markdown fences "~~~ruby" for code snippets (in config.yml):
 
-~~~ruby
+{% highlight js %}
 markdown: redcarpet
-~~~
+{% endhighlight %}
  
 ... but...
 
@@ -65,35 +65,62 @@ I decided to install python [Python install 2.7.8][pi]
 then saved [this page][pip]
 and from that download directory ran this 
 
-~~~python
+{% highlight bat %}
 c:\Python27\python.exe get-pip.py
-~~~
+{% endhighlight %}
 
 then this
 
-~~~python
+{% highlight bat %}
 c:\python27\python.exe -m pip install Pygments
-~~~
+{% endhighlight %}
 
 
 
 
-Run 
-====
-~~~ruby
+###Run 
+
+{% highlight ruby %}
 jekyll serve -w
-~~~
+{% endhighlight %}
 
 open browser at localhost:4000
 
 
-Editing
-====
+###Editing
+
 have fun with markdown syntax, [kramdown flavor][kf]
 
+[here's the markdown cheatsheet][mc]
+
+
+then you can post c-sharp code like 
+
+{% highlight c# linenos %}
+
+        /// <summary>
+        /// Method called when a school was selected. It sets the program-concentrations for that school
+        /// </summary>
+        /// <param name="code">School code</param>
+        public void OnSchoolSelected(string code)
+        {
+            //Load program-concentration list
+            var concentrations = _schoolList.Where(s => s.Code == code || code == "ALL" )
+                .SelectMany(s => s.Concentrations
+                    .Where(c=> code != "ALL" || ( c.Name.StartsWith("B") || s.Code.StartsWith("U") ))
+                ).OrderBy(c=>c.Name);
+
+            if (concentrations != null) this.View.ProgramConcentrations = concentrations.ToList();
+            else this.View.ProgramConcentrations = new List<ProgramConcentration>();
+            
+            List<Term> terms = new List<Term>();
+            this.View.Terms = terms;
+        }
+{% endhighlight %} 
 
 [rd]: http://rubyinstaller.org/downloads/
 [jw]: http://jekyll-windows.juthilo.com
 [kf]: http://kramdown.gettalong.org/syntax.html
 [pi]: https://www.python.org/downloads/windows/
 [pip]: https://bootstrap.pypa.io/get-pip.py
+[mc]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet

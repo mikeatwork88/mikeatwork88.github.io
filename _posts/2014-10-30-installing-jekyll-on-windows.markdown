@@ -18,40 +18,69 @@ Install Ruby development Kit
 [from here][rd].  Get the matching version to the ruby you installed above.  This just unzips.  I unzipped to the Ruby base directory/RDK.
 
 then drop to command line, cd to that directory, and run 
-{% highlight ruby %}
+~~~ruby
 ruby dk.rb init
 ruby dk.rb install
-{% endhighlight %}
+~~~
 
 
 
 Install Jekyll
 ====
-{% highlight ruby %}
+~~~ruby
 gem install jekyll
-{% endhighlight %}
+~~~
 
 
 
-Install rouge
+Install highlighter
 ====
-I use rouge just because I don't have python installed at the moment.  Rouge uses ruby.
-{% highlight ruby %}
+But Github doesnt have rouge as of 2014/10/31. 
+
+
+~~~ruby
 gem install rouge
-{% endhighlight %}
+~~~
 
 then I opened my site's config.yml file and added a line 
-{% highlight ruby %}
+~~~ruby
 highlighter: rouge
-{% endhighlight %}
+~~~
+
+For Github I had to remove the rouge from config,
+
+and could have gone with straight jekyll highlighting
+
+... changing the markdown to redcarpet and using the standard Markdown fences "~~~ruby" for code snippets (in config.yml):
+
+~~~ruby
+markdown: redcarpet
+~~~
+ 
+... but...
+
+I decided to install python [Python install 2.7.8][pi]
+then saved [this page][pip]
+and from that download directory ran this 
+
+~~~python
+c:\Python27\python.exe get-pip.py
+~~~
+
+then this
+
+~~~python
+c:\python27\python.exe -m pip install Pygments
+~~~
+
 
 
 
 Run 
 ====
-{% highlight ruby %}
+~~~ruby
 jekyll serve -w
-{% endhighlight %}
+~~~
 
 open browser at localhost:4000
 
@@ -64,3 +93,5 @@ have fun with markdown syntax, [kramdown flavor][kf]
 [rd]: http://rubyinstaller.org/downloads/
 [jw]: http://jekyll-windows.juthilo.com
 [kf]: http://kramdown.gettalong.org/syntax.html
+[pi]: https://www.python.org/downloads/windows/
+[pip]: https://bootstrap.pypa.io/get-pip.py
